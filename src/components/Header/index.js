@@ -4,19 +4,7 @@ import { Container } from './styles';
 import Button from '../Button';
 import { darkColor } from '../../colors';
 import { onSignedOut, isSigned } from '../../services/auth';
-import {
-  MdFeedback,
-  MdExitToApp,
-  MdRemoveRedEye,
-  MdLocalPostOffice,
-  MdAirportShuttle,
-  MdFavoriteBorder,
-  MdPerson,
-  MdPersonAdd,
-  MdPersonOutline,
-  MdArrowUpward,
-  MdViewAgenda
-} from 'react-icons/md';
+import { MdExitToApp, MdArrowUpward, MdViewAgenda } from 'react-icons/md';
 
 export default function Header() {
   async function handleLogout(event) {
@@ -37,8 +25,7 @@ export default function Header() {
             style={{
               color: darkColor,
               width: '200px',
-              boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
-              margin: '0 10px'
+              boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
             }}
             title="Postar evento"
             text={<MdArrowUpward size={30} />}

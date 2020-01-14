@@ -14,6 +14,8 @@ export default function Feed() {
         headers: { Authorization: await getToken() }
       });
 
+      console.log(data);
+
       setFeed(data);
     }
     loadFeed();

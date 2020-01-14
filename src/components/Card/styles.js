@@ -14,8 +14,8 @@ export const Container = styled.div`
     height: 300px;
     margin: 10px 0;
     padding: 20px 10px;
-    transition: box-shadow 0.1s ease-in-out, width 0.1s ease-in-out,
-      height 0.1s ease-in-out;
+    transition: box-shadow 0.1s ease-out, width 0.1s ease-out,
+      height 0.1s ease-out;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 
     border-radius: 2px;
@@ -43,7 +43,7 @@ export const Container = styled.div`
   .title {
     text-align: center;
     color: ${lightColor};
-    transition: font-size 0.1s ease-in-out;
+    transition: font-size 0.1s ease-out;
   }
 
   img {
@@ -52,7 +52,6 @@ export const Container = styled.div`
     background-repeat: no-repeat;
     height: 200px;
     border-radius: 2px;
-    transition: height 0.1s ease-in-out, width 0.1s ease-in-out;
   }
 
   .description {
@@ -60,7 +59,7 @@ export const Container = styled.div`
     text-align: justify;
     font-size: 18px;
     opacity: 0;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-out;
     font-weight: bold;
   }
 `;
