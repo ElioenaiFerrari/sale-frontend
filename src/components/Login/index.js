@@ -1,40 +1,39 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { Container } from './styles'
-import { Input, Button } from '../index'
-import { lightColor, darkColor } from '../../colors'
+import { Container } from './styles';
+import { Input, Button } from '../index';
+import { lightColor, darkColor } from '../../colors';
 
-import api from '../../services/api'
-import { addEmail, addPassword } from '../../actions/users'
-import { onSignedIn } from '../../services/auth'
+import api from '../../services/api';
+import { addEmail, addPassword } from '../../actions/users';
+import { onSignedIn } from '../../services/auth';
 
 export default function Login() {
-  const users = useSelector(state => state.users)
+  const users = useSelector(state => state.users);
 
   async function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
     try {
       if (users.email && users.password) {
         const { data } = await api.post('/auth', {
           email: users.email,
           password: users.password
-        })
+        });
 
-        console.log(data)
-
-        if (!data) {
-          return alert('Email ou senha incorretos!')
+        if (data) {
+          onSignedIn(data);
+          return (window.location.href = '/posts');
         }
         /**
          * Salvar token
          * */
-        onSignedIn(data)
+        return alert('Email ou senha incorretos!');
       } else {
-        alert('Por favor, preencha todos os dados!')
+        alert('Por favor, preencha todos os dados!');
       }
     } catch (e) {
-      console.log(e)
+      alert('Dados incorretos!');
     }
   }
 
@@ -69,5 +68,5 @@ export default function Login() {
         type="submit"
       />
     </Container>
-  )
+  );
 }

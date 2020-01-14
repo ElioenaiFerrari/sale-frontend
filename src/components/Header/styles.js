@@ -6,7 +6,7 @@ export const Container = styled.div`
   max-height: 80px;
   background: linear-gradient(90deg, ${darkColor}, ${lightColor});
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 0 10px;
 
@@ -14,5 +14,11 @@ export const Container = styled.div`
     color: #fff;
     font-size: 52px;
     font-weight: bold;
+  }
+
+  div#buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
   }
 `;
