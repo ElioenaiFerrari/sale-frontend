@@ -15,17 +15,24 @@ export default function Login() {
   async function handleSubmit(event) {
     event.preventDefault()
     try {
-      const { data } = await api.post('/auth', {
-        email: users.email,
-        password: users.password
-      })
-      if (!data) {
-        return alert('Email ou senha incorretos!')
+      if (users.email && users.password) {
+        const { data } = await api.post('/auth', {
+          email: users.email,
+          password: users.password
+        })
+
+        console.log(data)
+
+        if (!data) {
+          return alert('Email ou senha incorretos!')
+        }
+        /**
+         * Salvar token
+         * */
+        onSignedIn(data)
+      } else {
+        alert('Por favor, preencha todos os dados!')
       }
-      /**
-       * Salvar token
-       * */
-      onSignedIn(data)
     } catch (e) {
       console.log(e)
     }
