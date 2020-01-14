@@ -8,7 +8,7 @@ export default function Select(props) {
 
   return (
     <Container>
-      <select onBlur={e => dispatch(props.action(e.target.value))} {...props}>
+      <select onChange={e => dispatch(props.action(e.target.value))} {...props}>
         {props.options.map(opt => (
           <option value={opt}>{opt}</option>
         ))}

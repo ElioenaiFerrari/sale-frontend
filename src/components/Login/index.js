@@ -1,13 +1,34 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 import { Container } from './styles'
 import { Input, Button } from '../index'
-import { addEmail, addPassword } from '../../actions/users'
 import { lightColor, darkColor } from '../../colors'
 
+import api from '../../services/api'
+import { addEmail, addPassword } from '../../actions/users'
+import { onSignedIn } from '../../services/auth'
+
 export default function Login() {
-  function handleSubmit(event) {
+  const users = useSelector(state => state.users)
+
+  async function handleSubmit(event) {
     event.preventDefault()
+    try {
+      const { data } = await api.post('/auth', {
+        email: users.email,
+        password: users.password
+      })
+      if (!data) {
+        return alert('Email ou senha incorretos!')
+      }
+      /**
+       * Salvar token
+       * */
+      onSignedIn(data)
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (
@@ -31,7 +52,7 @@ export default function Login() {
         placeholder="Password"
       />
       <Button
-        action={() => {}}
+        action={handleSubmit}
         style={{
           background: `linear-gradient(90deg, ${darkColor}, ${lightColor})`,
           color: '#FFF',

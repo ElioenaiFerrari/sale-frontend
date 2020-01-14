@@ -1,4 +1,4 @@
-export default function users(state = {}, action) {
+export default function users(state = { course: 'ADMINISTRAÇÃO' }, action) {
   switch (action.type) {
     case 'ADD_EMAIL':
       return { ...state, email: action.email }
